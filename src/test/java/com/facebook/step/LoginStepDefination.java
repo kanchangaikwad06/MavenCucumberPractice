@@ -6,14 +6,14 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-
 public class LoginStepDefination extends LoginPage {
 	
-	LoginStepDefination lp = new LoginStepDefination();
+	LoginPage lp =new LoginPage();
 
 	@Given("^Launch Chrome Browser and open Facebook Url$")
 	public void launch_Chrome_Browser_and_open_Facebook_Url() throws Throwable {
-		lp.openUrl();
+		lp.launchUrl();
+		
 	    	}
 
 	@When("^User enter Username$")
@@ -38,5 +38,18 @@ public class LoginStepDefination extends LoginPage {
 		lp.verifyLogin();
 	    
 	}
+	@When("^User Click on Create New Account Button$")
+	public void user_click_on_create_new_account_button() {
+		lp.createNewAccount();
+		
+}
+	
+	@Then("User should be able to SignUp successfully")
+	public void user_should_be_able_to_sign_up_successfully() {
+	    lp.signUp();
+	    
+	}
 
+
+	
 }
