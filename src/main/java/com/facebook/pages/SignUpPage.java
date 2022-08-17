@@ -1,32 +1,67 @@
 package com.facebook.pages;
-
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.CacheLookup;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class SignUpPage {
 
-	WebDriver driver;
-
-	public void launchFacebookUrl() {
-		System.setProperty("webdriver.chrome.driver", "D:\\Automation Software\\chromedriver_win32\\chromedriver.exe");
-		driver = new ChromeDriver();
-		driver.get("https://www.facebook.com/");
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-	}
-	public void createNewAccount() {
-		driver.findElement(By.xpath("//a[text()= 'Create New Account']")).click();
-	}
-
-	public void firstName(String fname) {
-		driver.findElement(By.xpath("//input[@name='firstname']")).sendKeys(fname);
-
-	}
-	public void lastName(String lname) {
-		driver.findElement(By.xpath("//input[@name='lastname']")).sendKeys(lname);
-
-	}
+	 public WebDriver driver;
+	 
+	 public SignUpPage(WebDriver driver) {
+		 this.driver= driver;
+		 PageFactory.initElements(driver, this);
+		 
 }
+	@FindBy(xpath = "//*[text()='Create New Account']" )
+	@CacheLookup
+	WebElement btnCreateNewAccount;
+
+	@FindBy(xpath = "//input[@name ='firstname']" )
+	@CacheLookup
+	WebElement textFirstName;
+	
+
+	@FindBy(xpath = "//input[@name ='lastname']")
+	@CacheLookup
+	WebElement txtLastName;
+	
+	@FindBy(xpath = "//input[@name ='reg_email__']")
+	@CacheLookup
+	WebElement txtMobNum;
+	
+	@FindBy(xpath = "//*[@id ='password_step_input']")
+	@CacheLookup
+	WebElement txtNewPassword;
+	
+	
+	public void createNewAccount() {
+
+		//driver.findElement(By.xpath("//a[text() ='Create New Account']")).click();
+		btnCreateNewAccount.click();
+}
+	public void firstName(String fname) {
+		textFirstName.sendKeys(fname);
+		
+	}
+
+	public void lastName(String lname) {
+		txtLastName.sendKeys(lname);
+		
+	}
+	public void mobNum(String mobNum) {
+		txtMobNum.sendKeys(mobNum);
+	}
+	
+	public void newPassword(String newPass) {
+		txtNewPassword.sendKeys(newPass);
+		
+}
+}
+	
+
+
+
+

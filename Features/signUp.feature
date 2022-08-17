@@ -4,12 +4,13 @@ Feature: sign Up functionality with Parameters
 
  @SignUp
   Scenario Outline: SignUp Fuctionality
-    Given Launch Chrome and open Facebook Url 
+    Given Launch Chrome Browser 
+    When User enter Url "https://www.facebook.com/"
     When User Click on Create New Account 
-    When User enter First Name<firstName>
-    When User enter Last Name<lastName>
+    When User enter first name as "Kanchan"
+    And User enter last name as "Gaikwad"
+    When User enter Mobile Number as "9876543267"
+    When User enter new password as "test@3452"
+    
  
   
-    Examples: 
-      |firstName| lastName | 
-      |Kanchan  | Gaikwad | 
